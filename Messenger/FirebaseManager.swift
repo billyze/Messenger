@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 final class FirebaseManager {
     static var shared = FirebaseManager()
@@ -66,5 +67,14 @@ extension FirebaseManager {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("messages").child(date).setValue(["userSending": messageContainer.userSending, "userReceiving": messageContainer.userReceiving, "message": messageContainer.message])
+    }
+    
+    func registerUser(username: String, password: String, firstName: String, lastName: String){
+        Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
+        }
+        var safeUser = username.replacingOccurrences(of: "@", with: "-")
+        safeUser = safeUser.replacingOccurrences(of: ".", with: "-")
+        let ref = Database.database().reference()
+        ref.child("users").child(safeUser).setValue(["email": username, "firstName": firstName, "lastName": lastName])
     }
 }

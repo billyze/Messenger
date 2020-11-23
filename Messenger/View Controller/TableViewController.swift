@@ -27,14 +27,14 @@ class userListTableViewController: UITableViewController {
                     let value = snapshot.value as? NSDictionary
                     value?.forEach{
                         let val = $0.value as? NSDictionary
-                        if(val?["userSending"] as! String == self.user)
+                        if(val?["userSending"] as? String == self.user)
                         {
                             if(!(self.userList.contains(val!["userReceiving"] as! String)))
                             {
                                 self.userList.append(val?["userReceiving"] as! String)
                             }
                         }
-                        else if(val?["userReceiving"] as! String == self.user)
+                        else if(val?["userReceiving"] as? String == self.user)
                         {
                             if(!(self.userList.contains(val!["userSending"] as! String)))
                             {
@@ -59,7 +59,7 @@ class userListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ((userList.count) + 1)
+        return ((userList.count) + 2)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,11 +68,20 @@ class userListTableViewController: UITableViewController {
             cell.userName.text = "\(userList[indexPath.row])"
             return cell
         }
-        else{
+        else if (indexPath.row == userList.count){
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "newUser", for: indexPath) as? newUserTableViewCell else {return UITableViewCell()}
             cell.newUserBtn.setTitle("Add New Contact", for: .normal)
             return cell
         }
+        else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "logOut", for: indexPath) as? logOutTableViewCell else {return UITableViewCell()}
+            cell.logOutBtn.setTitle("Log Out", for: .normal)
+            return cell
+        }
+    }
+    
+    @IBAction func logOutBtnTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,7 +96,7 @@ class userListTableViewController: UITableViewController {
     @IBAction func addNewUser(_ sender: Any) {
         let alert = UIAlertController(title: "New Contact", message: "Enter new contact's username:", preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.text = "Example@gmail.com"
+            textField.placeholder = "Example@gmail.com"
         }
         alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
@@ -100,8 +109,14 @@ class userListTableViewController: UITableViewController {
                     vc.contact = newContact
                     self.present(vc, animated: true)
                 }
+                else{
+                    let errorAlert = UIAlertController(title: "Error", message: "User does not exist", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated:true)
+                }
             }
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
 }

@@ -19,6 +19,7 @@
 		3A19EC10255F6EEE00885C0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A19EC0F255F6EEC00885C0E /* GoogleService-Info.plist */; };
 		3A19EC11255F6EEE00885C0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A19EC0F255F6EEC00885C0E /* GoogleService-Info.plist */; };
 		3A19EC12255F6EEE00885C0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A19EC0F255F6EEC00885C0E /* GoogleService-Info.plist */; };
+		3A39D2F4256A0F5D00361DA0 /* logOutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39D2F3256A0F5D00361DA0 /* logOutTableViewCell.swift */; };
 		3A43E7E6256024F800E4A7DB /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A43E7E5256024F800E4A7DB /* Messages.swift */; };
 		3A43E80D25606E1100E4A7DB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A43E80C25606E1100E4A7DB /* TableViewController.swift */; };
 		3A43E81225606FAC00E4A7DB /* userListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A43E81125606FAC00E4A7DB /* userListTableViewCell.swift */; };
@@ -66,6 +67,7 @@
 		3A19EBE4255DF87700885C0E /* MessengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerUITests.swift; sourceTree = "<group>"; };
 		3A19EBE6255DF87700885C0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A19EC0F255F6EEC00885C0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A39D2F3256A0F5D00361DA0 /* logOutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logOutTableViewCell.swift; sourceTree = "<group>"; };
 		3A43E7E5256024F800E4A7DB /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		3A43E80C25606E1100E4A7DB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3A43E81125606FAC00E4A7DB /* userListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userListTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,7 +138,8 @@
 		3A19EBBE255DF85500885C0E /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				3A43E7E5256024F800E4A7DB /* Messages.swift */,
+				3A4228DB256AD61C0029092B /* Table View Cells */,
+				3A4228DA256AD5EF0029092B /* View Controller */,
 				3A43E7EA256024FD00E4A7DB /* Model */,
 				3A19EC0F255F6EEC00885C0E /* GoogleService-Info.plist */,
 				3A19EBBF255DF85500885C0E /* AppDelegate.swift */,
@@ -147,12 +150,6 @@
 				3A19EBCD255DF87600885C0E /* LaunchScreen.storyboard */,
 				3A19EBD0255DF87600885C0E /* Info.plist */,
 				3A19EBC8255DF85500885C0E /* Messenger.xcdatamodeld */,
-				3A43E81125606FAC00E4A7DB /* userListTableViewCell.swift */,
-				3A43E8162560725E00E4A7DB /* newUserTableViewCell.swift */,
-				3A43E84B2560E81800E4A7DB /* messagesTableViewCell.swift */,
-				3A19EBC3255DF85500885C0E /* ViewController.swift */,
-				3A43E80C25606E1100E4A7DB /* TableViewController.swift */,
-				3A43E81B2560E19400E4A7DB /* messagesViewController.swift */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -175,9 +172,31 @@
 			path = MessengerUITests;
 			sourceTree = "<group>";
 		};
+		3A4228DA256AD5EF0029092B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3A19EBC3255DF85500885C0E /* ViewController.swift */,
+				3A43E80C25606E1100E4A7DB /* TableViewController.swift */,
+				3A43E81B2560E19400E4A7DB /* messagesViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3A4228DB256AD61C0029092B /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A43E81125606FAC00E4A7DB /* userListTableViewCell.swift */,
+				3A43E8162560725E00E4A7DB /* newUserTableViewCell.swift */,
+				3A39D2F3256A0F5D00361DA0 /* logOutTableViewCell.swift */,
+				3A43E84B2560E81800E4A7DB /* messagesTableViewCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		3A43E7EA256024FD00E4A7DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A43E7E5256024F800E4A7DB /* Messages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -451,6 +470,7 @@
 				3A43E8172560725E00E4A7DB /* newUserTableViewCell.swift in Sources */,
 				3A43E80D25606E1100E4A7DB /* TableViewController.swift in Sources */,
 				3A43E7E6256024F800E4A7DB /* Messages.swift in Sources */,
+				3A39D2F4256A0F5D00361DA0 /* logOutTableViewCell.swift in Sources */,
 				3A19EBC0255DF85500885C0E /* AppDelegate.swift in Sources */,
 				3A43E81225606FAC00E4A7DB /* userListTableViewCell.swift in Sources */,
 				3A5F3B22255F7CF000F32975 /* FirebaseManager.swift in Sources */,
